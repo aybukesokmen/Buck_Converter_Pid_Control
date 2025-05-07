@@ -1,0 +1,3 @@
+../MYLIB/Src/adc_reader.c:12:6:ADC_Reader_Init	1
+../MYLIB/Src/adc_reader.c:41:10:ADC_Reader_ReadRaw	3
+../MYLIB/Src/adc_reader.c:63:7:ADC_Reader_ConvertToVoltage	1
