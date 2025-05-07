@@ -31,7 +31,16 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+typedef struct {
+    float vout;
+    float iout;
+    float temperature;
+    float pwm_duty;
+    float vout_target;
+    uint8_t overcurrent;
+} SystemState_t;
 
+extern SystemState_t g_system;
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

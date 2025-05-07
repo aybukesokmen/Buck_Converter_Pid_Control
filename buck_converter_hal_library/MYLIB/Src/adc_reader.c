@@ -5,61 +5,75 @@
  *      Author: 90545
  */
 
-
+/*
+ * adc_reader.c
+ *
+ *  Created on: May 8, 2025
+ *      Author: 90545
+ */
 #include "adc_reader.h"
-#include "stm32f4xx.h"  // CMSIS: Register tanımları
+#include "stm32f4xx.h"
 
-void ADC_Reader_Init(void)
+volatile uint16_t adc_dma_buffer[2];  // DMA ile doldurulacak
+
+void ADC_Reader_Init_DMA(void)
 {
-    /* GPIOA saatini aç (PA0, PA1 analog) */
+    // 1. GPIOA saat ve analog moda al
     RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
+    GPIOA->MODER |= (3 << (0 * 2)) | (3 << (1 * 2));  // PA0 & PA1 analog
 
-    /* PA0, PA1 -> Analog mode */
-    GPIOA->MODER |= (3 << (0 * 2)) | (3 << (1 * 2));
+    // 2. DMA2 saatini aç (ADC1 için DMA2 Stream 0 kullanılır)
+    RCC->AHB1ENR |= RCC_AHB1ENR_DMA2EN;
 
-    /* ADC1 saatini aç */
+    // 3. ADC1 saatini aç
     RCC->APB2ENR |= RCC_APB2ENR_ADC1EN;
 
-    /* Ortak ayarlar: ADC saati -> PCLK2 / 4 */
+    // 4. ADC ortak clock prescaler ayarı (PCLK2 / 4)
     ADC->CCR &= ~ADC_CCR_ADCPRE;
-    ADC->CCR |= (1 << 16);  // PCLK2 / 4
+    ADC->CCR |= (1 << 16); // PCLK2 / 4
 
-    /* Çözünürlük: 12 bit */
-    ADC1->CR1 &= ~ADC_CR1_RES;
+    // 5. DMA2 Stream 0 konfigürasyonu (ADC1 için)
+    DMA2_Stream0->CR &= ~DMA_SxCR_EN; // önce DMA'yı kapat
+    while (DMA2_Stream0->CR & DMA_SxCR_EN); // emin olmak için bekle
 
-    /* Hizalama: Sağ (ALIGN = 0) */
-    ADC1->CR2 &= ~ADC_CR2_ALIGN;
+    DMA2_Stream0->PAR = (uint32_t)&ADC1->DR;
+    DMA2_Stream0->M0AR = (uint32_t)adc_dma_buffer;
+    DMA2_Stream0->NDTR = 2;  // 2 kanal veri
 
-    /* Sıcaklık sensörü ve Vref aktif (opsiyonel) */
-    ADC->CCR |= ADC_CCR_TSVREFE;
+    DMA2_Stream0->CR = 0;
+    DMA2_Stream0->CR |= (0 << 25);  // Channel 0 (ADC1)
+    DMA2_Stream0->CR |= DMA_SxCR_MINC     // Memory increment
+                      | DMA_SxCR_CIRC     // Circular mode
+                      | DMA_SxCR_PSIZE_0  // 16-bit peripheral
+                      | DMA_SxCR_MSIZE_0  // 16-bit memory
+                      | DMA_SxCR_PL_1;    // High priority
 
-    /* ADC etkinleştirme */
+    DMA2_Stream0->FCR = 0; // FIFO devre dışı (direct mode)
+
+    DMA2_Stream0->CR |= DMA_SxCR_EN;
+
+    // 6. ADC ayarları
+    ADC1->CR2 &= ~ADC_CR2_CONT;  // Tek çevrim
+    ADC1->CR1 |= ADC_CR1_SCAN;   // Çok kanallı okuma (scan mode)
+    ADC1->CR2 |= ADC_CR2_CONT;  // ADC sürekli çevrim moduna alınır
+
+    // Sıralama: SQR3[4:0] = kanal 0 (VOUT), SQR3[9:5] = kanal 1 (IOUT)
+    ADC1->SQR1 = (1 << 20);  // L[3:0] = 1 → 2 kanal
+    ADC1->SQR3 = (ADC_CHANNEL_VOUT << 0) | (ADC_CHANNEL_IOUT << 5);
+
+    // Örnekleme süresi: her kanal için 84 clk
+    ADC1->SMPR2 |= (7 << (0 * 3)) | (7 << (1 * 3));  // IN0 ve IN1
+
+    // DMA ayarları ADC içinde
+    ADC1->CR2 |= ADC_CR2_DMA | ADC_CR2_DDS;  // DMA + sürekli istek
+
+    // ADC etkinleştir
     ADC1->CR2 |= ADC_CR2_ADON;
-}
 
-/* Tek kanal ölçüm (yavaş ama taşınabilir, scan mode yok) */
-uint16_t ADC_Reader_ReadRaw(ADC_ChannelID_t channel)
-{
-    /* Kanalı seç (SQR3 -> SQ1) */
-    ADC1->SQR3 = channel & 0x1F;
-
-    /* Örnekleme süresi: 84 ADC clk (en uzun, en güvenli) */
-    if (channel <= 9)
-        ADC1->SMPR2 |= (7 << (channel * 3));
-    else
-        ADC1->SMPR1 |= (7 << ((channel - 10) * 3));
-
-    /* Çevrimi başlat */
+    // 7. ADC çevrim başlat
     ADC1->CR2 |= ADC_CR2_SWSTART;
-
-    /* EOC bekle */
-    while (!(ADC1->SR & ADC_SR_EOC));
-
-    /* Sonucu oku */
-    return (uint16_t)ADC1->DR;
 }
 
-/* ADC değerini voltaja çevir (örneğin Vref = 3.3V için) */
 float ADC_Reader_ConvertToVoltage(uint16_t adc_raw, float vref)
 {
     return ((float)adc_raw * vref) / 4095.0f;

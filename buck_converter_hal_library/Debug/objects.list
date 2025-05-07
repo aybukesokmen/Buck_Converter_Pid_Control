@@ -21,4 +21,5 @@
 "./MYLIB/Src/adc_reader.o"
 "./MYLIB/Src/control_pid_regulator.o"
 "./MYLIB/Src/pwm_output_driver.o"
+"./MYLIB/Src/sensor_converter.o"
 "./MYLIB/Src/system_health_monitor.o"

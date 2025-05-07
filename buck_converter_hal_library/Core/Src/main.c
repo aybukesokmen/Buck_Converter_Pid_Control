@@ -20,6 +20,7 @@
 #include "main.h"
 #include "Defines.h"
 #include "adc_reader.h"
+#include "sensor_converter.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /*
@@ -63,10 +64,9 @@ static void MX_GPIO_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 /* USER CODE BEGIN PV */
-uint16_t vout_raw = 0;
-float vout_volt = 0.0f;
-/* USER CODE END PV */
+SystemState_t g_system;
 
+/* USER CODE END PV */
 
 /* USER CODE END 0 */
 
@@ -100,19 +100,22 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-  ADC_Reader_Init();
+  // DMA buffer (DMA modunda kullanılır)
+  ADC_Reader_Init_DMA();  // Başlat (DMA & scan mode)
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
+      g_system.vout = Sensor_ConvertToVoltage(adc_dma_buffer[0]);
+      g_system.iout = Sensor_ConvertToCurrent(adc_dma_buffer[1]);
 
-    /* USER CODE BEGIN 3 */
-	    vout_raw = ADC_Reader_ReadRaw(ADC_CHANNEL_VOUT);
-	    vout_volt = ADC_Reader_ConvertToVoltage(vout_raw, 3.3f);
-
+      if (g_system.iout >= 10.0f) {
+          g_system.overcurrent = 1;
+      } else {
+          g_system.overcurrent = 0;
+      }
   }
   /* USER CODE END 3 */
 }

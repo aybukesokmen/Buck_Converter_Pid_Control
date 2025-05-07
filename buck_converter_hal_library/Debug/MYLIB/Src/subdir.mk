@@ -8,18 +8,21 @@ C_SRCS += \
 ../MYLIB/Src/adc_reader.c \
 ../MYLIB/Src/control_pid_regulator.c \
 ../MYLIB/Src/pwm_output_driver.c \
+../MYLIB/Src/sensor_converter.c \
 ../MYLIB/Src/system_health_monitor.c 
 
 OBJS += \
 ./MYLIB/Src/adc_reader.o \
 ./MYLIB/Src/control_pid_regulator.o \
 ./MYLIB/Src/pwm_output_driver.o \
+./MYLIB/Src/sensor_converter.o \
 ./MYLIB/Src/system_health_monitor.o 
 
 C_DEPS += \
 ./MYLIB/Src/adc_reader.d \
 ./MYLIB/Src/control_pid_regulator.d \
 ./MYLIB/Src/pwm_output_driver.d \
+./MYLIB/Src/sensor_converter.d \
 ./MYLIB/Src/system_health_monitor.d 
 
 
@@ -30,7 +33,7 @@ MYLIB/Src/%.o MYLIB/Src/%.su MYLIB/Src/%.cyclo: ../MYLIB/Src/%.c MYLIB/Src/subdi
 clean: clean-MYLIB-2f-Src
 
 clean-MYLIB-2f-Src:
-	-$(RM) ./MYLIB/Src/adc_reader.cyclo ./MYLIB/Src/adc_reader.d ./MYLIB/Src/adc_reader.o ./MYLIB/Src/adc_reader.su ./MYLIB/Src/control_pid_regulator.cyclo ./MYLIB/Src/control_pid_regulator.d ./MYLIB/Src/control_pid_regulator.o ./MYLIB/Src/control_pid_regulator.su ./MYLIB/Src/pwm_output_driver.cyclo ./MYLIB/Src/pwm_output_driver.d ./MYLIB/Src/pwm_output_driver.o ./MYLIB/Src/pwm_output_driver.su ./MYLIB/Src/system_health_monitor.cyclo ./MYLIB/Src/system_health_monitor.d ./MYLIB/Src/system_health_monitor.o ./MYLIB/Src/system_health_monitor.su
+	-$(RM) ./MYLIB/Src/adc_reader.cyclo ./MYLIB/Src/adc_reader.d ./MYLIB/Src/adc_reader.o ./MYLIB/Src/adc_reader.su ./MYLIB/Src/control_pid_regulator.cyclo ./MYLIB/Src/control_pid_regulator.d ./MYLIB/Src/control_pid_regulator.o ./MYLIB/Src/control_pid_regulator.su ./MYLIB/Src/pwm_output_driver.cyclo ./MYLIB/Src/pwm_output_driver.d ./MYLIB/Src/pwm_output_driver.o ./MYLIB/Src/pwm_output_driver.su ./MYLIB/Src/sensor_converter.cyclo ./MYLIB/Src/sensor_converter.d ./MYLIB/Src/sensor_converter.o ./MYLIB/Src/sensor_converter.su ./MYLIB/Src/system_health_monitor.cyclo ./MYLIB/Src/system_health_monitor.d ./MYLIB/Src/system_health_monitor.o ./MYLIB/Src/system_health_monitor.su
 
 .PHONY: clean-MYLIB-2f-Src
 
