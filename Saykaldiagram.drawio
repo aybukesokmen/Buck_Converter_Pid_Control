@@ -1,0 +1,99 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="27.0.1">
+  <diagram name="Sayfa -1" id="3hPhHfcIJNfKIKrrypG2">
+    <mxGraphModel dx="1023" dy="1102" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Kr1MSTCpX4_1PgjIrzuj-1" target="Kr1MSTCpX4_1PgjIrzuj-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-1" value="Buck Converter HW&lt;br&gt;-Mosfet+ Diode&lt;br&gt;-Inductor+ Capacitor" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="90" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-4" value="Voltage Divider" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-5" value="Current Sense (Shunt)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="280" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-8" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="170" y="210" as="sourcePoint" />
+            <mxPoint x="240" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-9" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="170" y="309.83" as="sourcePoint" />
+            <mxPoint x="240" y="309.83" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-10" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="310" as="sourcePoint" />
+            <mxPoint x="240" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-11" value="CONTROL LOOP TIMER(10kHz ISR)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Kr1MSTCpX4_1PgjIrzuj-10">
+          <mxGeometry x="0.0992" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-12" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="310" as="sourcePoint" />
+            <mxPoint x="240" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Kr1MSTCpX4_1PgjIrzuj-13" target="Kr1MSTCpX4_1PgjIrzuj-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-13" value="PID/PI&lt;div&gt;Voltage Control&lt;/div&gt;&lt;div&gt;(error=Vref-Vout)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Kr1MSTCpX4_1PgjIrzuj-14" target="Kr1MSTCpX4_1PgjIrzuj-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-14" value="Pwm Duty Update&lt;br&gt;(0%-95%)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="454" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Kr1MSTCpX4_1PgjIrzuj-15" target="Kr1MSTCpX4_1PgjIrzuj-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-15" value="Pwm Output Timer&lt;br&gt;20kHz" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="550" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-16" value="Gate Control for Mosfet" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="640" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-21" value="Can Telemetry" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="537.5" y="60" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Kr1MSTCpX4_1PgjIrzuj-22" target="Kr1MSTCpX4_1PgjIrzuj-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-22" value="Can Message Encoder (100ms timer)&lt;br&gt;-Vin, Iin, Vout, Iout, Temp)&lt;br&gt;-System State (IDLE,RUN,ERROR)&lt;br&gt;-Error Codes" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="485" y="90" width="205" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-23" value="CAN Transmit&lt;br&gt;(DBC Format)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="485" y="190" width="205" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-25" value="Global Error Handler" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="501.25" y="295" width="172.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Kr1MSTCpX4_1PgjIrzuj-27" target="Kr1MSTCpX4_1PgjIrzuj-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-27" value="Monitor:&lt;br&gt;-Overcurrent &amp;gt; 10A&lt;br&gt;-PID instability (oscillation detect)&lt;br&gt;-ADC Failure" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="485" y="325" width="205" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-28" value="System State Manager&lt;br&gt;IDLE/RUNNING/ERROR" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="485" y="425" width="205" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Kr1MSTCpX4_1PgjIrzuj-29" value="&lt;span style=&quot;font-size: 11px; text-wrap-mode: nowrap; background-color: rgb(255, 255, 255);&quot;&gt;İnput Voltage(36V-60V)&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="50" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
