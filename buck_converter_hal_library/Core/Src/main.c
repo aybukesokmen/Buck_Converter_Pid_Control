@@ -67,9 +67,45 @@ static void MX_GPIO_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 /* USER CODE BEGIN PV */
+
+typedef enum {
+    SYS_STEP_READ_ADC = 0,
+    SYS_STEP_CONVERT,
+    SYS_STEP_CHECK_FAULT,
+    SYS_STEP_UPDATE_PARAMS,
+    SYS_STEP_PID,
+    SYS_STEP_PWM
+} SystemStep_t;
+
 SystemState_t g_system;
 PID_Controller_t vout_pid;
+
+
+SystemStep_t current_step = SYS_STEP_READ_ADC;
+
+
+
 float test_pwm_duty = 0.0f;
+
+//pid
+/* PID ayarları  */
+float pid_Kp = 0.8f;
+float pid_Ki = 20.0f;
+float pid_Kd = 0.5f;
+float pid_dt = 0.0001f;
+
+
+//can
+float can_setpoint = 24.0f;
+float can_kp = 0.8f;
+float can_ki = 20.0f;
+float can_kd = 0.0f;
+uint8_t can_enable = 1;
+
+
+
+
+
 /* USER CODE END PV */
 
 /* USER CODE END 0 */
@@ -106,7 +142,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   // DMA buffer (DMA modunda kullanılır)
   ADC_Reader_Init_DMA();  // Başlat (DMA & scan mode)
-  PID_Init(&vout_pid, 0.8f, 20.0f, 0.0f, 0.0001f, 0.0f, 100.0f); // Kp, Ki, Kd, dt (saniye), min, max
+  PID_Init(&vout_pid, pid_Kp, pid_Ki, pid_Kd, pid_dt, 0.0f, 100.0f);
   PWM_Output_Init();
   /* USER CODE END 2 */
 
@@ -114,29 +150,58 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  /**CURRENT***/
-      g_system.vout = Sensor_ConvertToVoltage(adc_dma_buffer[0]);
-      g_system.iout = Sensor_ConvertToCurrent(adc_dma_buffer[1]);
+      switch (current_step)
+      {
+          case SYS_STEP_READ_ADC:
+              // DMA buffer'dan ADC verilerini oku
+              adc_dma_buffer[0];  // VOUT
+              adc_dma_buffer[1];  // IOUT
+              current_step = SYS_STEP_CONVERT;
+              break;
 
-      if (g_system.iout >= 10.0f) {
-          g_system.overcurrent = 1;
-      } else {
-          g_system.overcurrent = 0;
+          case SYS_STEP_CONVERT:
+              g_system.vout = Sensor_ConvertToVoltage(adc_dma_buffer[0]);
+              g_system.iout = Sensor_ConvertToCurrent(adc_dma_buffer[1]);
+              current_step = SYS_STEP_CHECK_FAULT;
+              break;
+
+          case SYS_STEP_CHECK_FAULT:
+              g_system.overcurrent = (g_system.iout >= 10.0f) ? 1 : 0;
+              current_step = SYS_STEP_UPDATE_PARAMS;
+              break;
+
+          case SYS_STEP_UPDATE_PARAMS:
+              g_system.vout_target = can_setpoint;
+              pid_Kp = can_kp;
+              pid_Ki = can_ki;
+              pid_Kd = can_kd;
+              current_step = SYS_STEP_PID;
+              break;
+
+          case SYS_STEP_PID:
+              if (can_enable)
+              {
+                  float duty = PID_Update(&vout_pid, g_system.vout_target, g_system.vout);
+                  g_system.pwm_duty = duty;
+              }
+              else
+              {
+                  g_system.pwm_duty = 0.0f;
+              }
+              current_step = SYS_STEP_PWM;
+              break;
+
+          case SYS_STEP_PWM:
+              PWM_Output_SetDuty(g_system.pwm_duty);
+              current_step = SYS_STEP_READ_ADC;  // döngüyü başa al
+              break;
+
+          default:
+              current_step = SYS_STEP_READ_ADC;
+              break;
       }
-
-      //************PID********
-
-      float duty = PID_Update(&vout_pid, 24.0f, g_system.vout);  // hedef: 24V
-      g_system.pwm_duty = duty;
-
-
-      //*************PWM************/
-     PWM_Output_SetDuty(g_system.pwm_duty);
-
-
-	 // PWM_Output_SetDuty(test_pwm_duty);
-
   }
+
   /* USER CODE END 3 */
 }
 
