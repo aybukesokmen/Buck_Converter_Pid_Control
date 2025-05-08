@@ -21,6 +21,8 @@
 #include "Defines.h"
 #include "adc_reader.h"
 #include "sensor_converter.h"
+#include "control_pid_regulator.h"
+#include "pwm_output_driver.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /*
@@ -57,6 +59,7 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -65,7 +68,8 @@ static void MX_GPIO_Init(void);
 /* USER CODE BEGIN 0 */
 /* USER CODE BEGIN PV */
 SystemState_t g_system;
-
+PID_Controller_t vout_pid;
+float test_pwm_duty = 0.0f;
 /* USER CODE END PV */
 
 /* USER CODE END 0 */
@@ -102,12 +106,15 @@ int main(void)
   /* USER CODE BEGIN 2 */
   // DMA buffer (DMA modunda kullanılır)
   ADC_Reader_Init_DMA();  // Başlat (DMA & scan mode)
+  PID_Init(&vout_pid, 0.8f, 20.0f, 0.0f, 0.0001f, 0.0f, 100.0f); // Kp, Ki, Kd, dt (saniye), min, max
+  PWM_Output_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  /**CURRENT***/
       g_system.vout = Sensor_ConvertToVoltage(adc_dma_buffer[0]);
       g_system.iout = Sensor_ConvertToCurrent(adc_dma_buffer[1]);
 
@@ -116,6 +123,19 @@ int main(void)
       } else {
           g_system.overcurrent = 0;
       }
+
+      //************PID********
+
+      float duty = PID_Update(&vout_pid, 24.0f, g_system.vout);  // hedef: 24V
+      g_system.pwm_duty = duty;
+
+
+      //*************PWM************/
+     PWM_Output_SetDuty(g_system.pwm_duty);
+
+
+	 // PWM_Output_SetDuty(test_pwm_duty);
+
   }
   /* USER CODE END 3 */
 }
