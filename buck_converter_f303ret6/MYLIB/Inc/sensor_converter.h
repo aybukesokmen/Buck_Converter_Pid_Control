@@ -1,9 +1,4 @@
-/*
- * sensor_converter.h
- *
- *  Created on: May 8, 2025
- *      Author: 90545
- */
+
 
 #ifndef SENSOR_CONVERTER_H_
 #define SENSOR_CONVERTER_H_

@@ -1,9 +1,4 @@
-/*
- * sensor_converter.c
- *
- *  Created on: May 8, 2025
- *      Author: 90545
- */
+
 #include "sensor_converter.h"
 
 float Sensor_ConvertToVoltage(uint16_t adc_val)
