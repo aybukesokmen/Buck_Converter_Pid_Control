@@ -23,16 +23,13 @@
 #include "sensor_converter.h"
 #include "control_pid_regulator.h"
 #include "pwm_output_driver.h"
+#include "can_transmitter.h"
+
+
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-/*
- #include "main.h"
-#include "adc.h"
-#include "pwm.h"
-#include "pid.h"
-#include "system_monitor.h"
-#include "temp_sensor.h"
- * */
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -53,6 +50,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+
 
 /* USER CODE END PV */
 
@@ -79,7 +77,8 @@ typedef enum {
 
 SystemState_t g_system;
 PID_Controller_t vout_pid;
-
+SystemCANState_t system_can_status = SYS_STATE_IDLE;
+uint32_t can_last_time = 0;
 
 SystemStep_t current_step = SYS_STEP_READ_ADC;
 
@@ -164,10 +163,21 @@ int main(void)
               g_system.iout = Sensor_ConvertToCurrent(adc_dma_buffer[1]);
               current_step = SYS_STEP_CHECK_FAULT;
               break;
-
           case SYS_STEP_CHECK_FAULT:
               g_system.overcurrent = (g_system.iout >= 10.0f) ? 1 : 0;
+
+              // Sistem durumu belirle
+              if (g_system.overcurrent) {
+                  system_can_status = SYS_STATE_OVERCURRENT;
+              } else if (can_enable) {
+                  system_can_status = SYS_STATE_RUNNING;
+              } else {
+                  system_can_status = SYS_STATE_IDLE;
+              }
+
               current_step = SYS_STEP_UPDATE_PARAMS;
+              break;
+
               break;
 
           case SYS_STEP_UPDATE_PARAMS:
@@ -200,6 +210,13 @@ int main(void)
               current_step = SYS_STEP_READ_ADC;
               break;
       }
+
+      // 100ms'de bir CAN mesajı gönder
+      if (HAL_GetTick() - can_last_time >= 100) {
+          CAN_Transmitter_SendTelemetry(&g_system, system_can_status);
+          can_last_time = HAL_GetTick();
+      }
+
   }
 
   /* USER CODE END 3 */

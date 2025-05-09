@@ -1,5 +1,5 @@
 MYLIB/Src/adc_reader.o: ../MYLIB/Src/adc_reader.c \
- C:/Users/90545/STM32CubeIDE/workspace_1.18.1/buck_converter_hal_library/MYLIB/Inc/adc_reader.h \
+ C:/Users/haydar.gungor/Desktop/Aybuke/Yeni\ klasör\ (2)/repo/Buck_Converter_Pid_Control/buck_converter_hal_library/MYLIB/Inc/adc_reader.h \
  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h \
  ../Drivers/CMSIS/Include/core_cm4.h \
@@ -25,7 +25,7 @@ MYLIB/Src/adc_reader.o: ../MYLIB/Src/adc_reader.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
-C:/Users/90545/STM32CubeIDE/workspace_1.18.1/buck_converter_hal_library/MYLIB/Inc/adc_reader.h:
+C:/Users/haydar.gungor/Desktop/Aybuke/Yeni\ klasör\ (2)/repo/Buck_Converter_Pid_Control/buck_converter_hal_library/MYLIB/Inc/adc_reader.h:
 ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:
 ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h:
 ../Drivers/CMSIS/Include/core_cm4.h:

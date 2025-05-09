@@ -1,0 +1,49 @@
+VERSION ""
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: CONTROLLER
+
+VAL_TABLE_ System_Status 0 "IDLE" 1 "RUNNING" 2 "ERROR" 3 "OVERCURRENT";
+
+BO_ 1365 DEVICE_STATUS: 8 CONTROLLER
+ SG_ Vout : 0|16@1+ (0.01,0) [0|60] "V" CONTROLLER
+ SG_ Iout : 16|16@1+ (0.01,0) [0|10] "A" CONTROLLER
+ SG_ Temp : 32|16@1+ (0.01,0) [0|150] "°C" CONTROLLER
+ SG_ Status : 48|8@1+ (1,0) [0|3] "" CONTROLLER
+ SG_ Reserved : 56|8@1+ (1,0) [0|255] "" CONTROLLER
+
+CM_ SG_ 1365 Vout "Output Voltage (scaled by 0.01V)";
+CM_ SG_ 1365 Iout "Output Current (scaled by 0.01A)";
+CM_ SG_ 1365 Temp "System Temperature (scaled by 0.01C)";
+CM_ SG_ 1365 Status "System Status (enum: 0=IDLE, 1=RUNNING, 2=ERROR, 3=OVERCURRENT)";

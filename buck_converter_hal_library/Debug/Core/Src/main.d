@@ -24,12 +24,13 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
- C:/Users/90545/STM32CubeIDE/workspace_1.18.1/buck_converter_hal_library/MYLIB/Inc/Defines.h \
- C:/Users/90545/STM32CubeIDE/workspace_1.18.1/buck_converter_hal_library/MYLIB/Inc/adc_reader.h \
- C:/Users/90545/STM32CubeIDE/workspace_1.18.1/buck_converter_hal_library/MYLIB/Inc/sensor_converter.h \
- C:/Users/90545/STM32CubeIDE/workspace_1.18.1/buck_converter_hal_library/MYLIB/Inc/Defines.h \
- C:/Users/90545/STM32CubeIDE/workspace_1.18.1/buck_converter_hal_library/MYLIB/Inc/control_pid_regulator.h \
- C:/Users/90545/STM32CubeIDE/workspace_1.18.1/buck_converter_hal_library/MYLIB/Inc/pwm_output_driver.h
+ C:/Users/haydar.gungor/Desktop/Aybuke/Yeni\ klasör\ (2)/repo/Buck_Converter_Pid_Control/buck_converter_hal_library/MYLIB/Inc/Defines.h \
+ C:/Users/haydar.gungor/Desktop/Aybuke/Yeni\ klasör\ (2)/repo/Buck_Converter_Pid_Control/buck_converter_hal_library/MYLIB/Inc/adc_reader.h \
+ C:/Users/haydar.gungor/Desktop/Aybuke/Yeni\ klasör\ (2)/repo/Buck_Converter_Pid_Control/buck_converter_hal_library/MYLIB/Inc/sensor_converter.h \
+ C:/Users/haydar.gungor/Desktop/Aybuke/Yeni\ klasör\ (2)/repo/Buck_Converter_Pid_Control/buck_converter_hal_library/MYLIB/Inc/Defines.h \
+ C:/Users/haydar.gungor/Desktop/Aybuke/Yeni\ klasör\ (2)/repo/Buck_Converter_Pid_Control/buck_converter_hal_library/MYLIB/Inc/control_pid_regulator.h \
+ C:/Users/haydar.gungor/Desktop/Aybuke/Yeni\ klasör\ (2)/repo/Buck_Converter_Pid_Control/buck_converter_hal_library/MYLIB/Inc/pwm_output_driver.h \
+ C:/Users/haydar.gungor/Desktop/Aybuke/Yeni\ klasör\ (2)/repo/Buck_Converter_Pid_Control/buck_converter_hal_library/MYLIB/Inc/can_transmitter.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -56,9 +57,10 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
-C:/Users/90545/STM32CubeIDE/workspace_1.18.1/buck_converter_hal_library/MYLIB/Inc/Defines.h:
-C:/Users/90545/STM32CubeIDE/workspace_1.18.1/buck_converter_hal_library/MYLIB/Inc/adc_reader.h:
-C:/Users/90545/STM32CubeIDE/workspace_1.18.1/buck_converter_hal_library/MYLIB/Inc/sensor_converter.h:
-C:/Users/90545/STM32CubeIDE/workspace_1.18.1/buck_converter_hal_library/MYLIB/Inc/Defines.h:
-C:/Users/90545/STM32CubeIDE/workspace_1.18.1/buck_converter_hal_library/MYLIB/Inc/control_pid_regulator.h:
-C:/Users/90545/STM32CubeIDE/workspace_1.18.1/buck_converter_hal_library/MYLIB/Inc/pwm_output_driver.h:
+C:/Users/haydar.gungor/Desktop/Aybuke/Yeni\ klasör\ (2)/repo/Buck_Converter_Pid_Control/buck_converter_hal_library/MYLIB/Inc/Defines.h:
+C:/Users/haydar.gungor/Desktop/Aybuke/Yeni\ klasör\ (2)/repo/Buck_Converter_Pid_Control/buck_converter_hal_library/MYLIB/Inc/adc_reader.h:
+C:/Users/haydar.gungor/Desktop/Aybuke/Yeni\ klasör\ (2)/repo/Buck_Converter_Pid_Control/buck_converter_hal_library/MYLIB/Inc/sensor_converter.h:
+C:/Users/haydar.gungor/Desktop/Aybuke/Yeni\ klasör\ (2)/repo/Buck_Converter_Pid_Control/buck_converter_hal_library/MYLIB/Inc/Defines.h:
+C:/Users/haydar.gungor/Desktop/Aybuke/Yeni\ klasör\ (2)/repo/Buck_Converter_Pid_Control/buck_converter_hal_library/MYLIB/Inc/control_pid_regulator.h:
+C:/Users/haydar.gungor/Desktop/Aybuke/Yeni\ klasör\ (2)/repo/Buck_Converter_Pid_Control/buck_converter_hal_library/MYLIB/Inc/pwm_output_driver.h:
+C:/Users/haydar.gungor/Desktop/Aybuke/Yeni\ klasör\ (2)/repo/Buck_Converter_Pid_Control/buck_converter_hal_library/MYLIB/Inc/can_transmitter.h:

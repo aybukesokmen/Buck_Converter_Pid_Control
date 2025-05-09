@@ -1,5 +1,5 @@
 MYLIB/Src/pwm_output_driver.o: ../MYLIB/Src/pwm_output_driver.c \
- C:/Users/90545/STM32CubeIDE/workspace_1.18.1/buck_converter_hal_library/MYLIB/Inc/pwm_output_driver.h \
+ C:/Users/haydar.gungor/Desktop/Aybuke/Yeni\ klasör\ (2)/repo/Buck_Converter_Pid_Control/buck_converter_hal_library/MYLIB/Inc/pwm_output_driver.h \
  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h \
  ../Drivers/CMSIS/Include/core_cm4.h \
@@ -25,7 +25,7 @@ MYLIB/Src/pwm_output_driver.o: ../MYLIB/Src/pwm_output_driver.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
-C:/Users/90545/STM32CubeIDE/workspace_1.18.1/buck_converter_hal_library/MYLIB/Inc/pwm_output_driver.h:
+C:/Users/haydar.gungor/Desktop/Aybuke/Yeni\ klasör\ (2)/repo/Buck_Converter_Pid_Control/buck_converter_hal_library/MYLIB/Inc/pwm_output_driver.h:
 ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:
 ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h:
 ../Drivers/CMSIS/Include/core_cm4.h:

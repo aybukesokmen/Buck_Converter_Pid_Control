@@ -61,8 +61,8 @@ all: main-build
 main-build: buck_converter_hal_library.elf secondary-outputs
 
 # Tool invocations
-buck_converter_hal_library.elf buck_converter_hal_library.map: $(OBJS) $(USER_OBJS) C:\Users\90545\STM32CubeIDE\workspace_1.18.1\buck_converter_hal_library\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "buck_converter_hal_library.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\90545\STM32CubeIDE\workspace_1.18.1\buck_converter_hal_library\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="buck_converter_hal_library.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+buck_converter_hal_library.elf buck_converter_hal_library.map: $(OBJS) $(USER_OBJS) C:\Users\haydar.gungor\Desktop\Aybuke\Yeni\ klasör\ (2)\repo\Buck_Converter_Pid_Control\buck_converter_hal_library\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "buck_converter_hal_library.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\haydar.gungor\Desktop\Aybuke\Yeni klasör (2)\repo\Buck_Converter_Pid_Control\buck_converter_hal_library\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="buck_converter_hal_library.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
