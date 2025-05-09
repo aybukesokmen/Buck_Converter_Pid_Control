@@ -1,0 +1,65 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.0.2">
+  <diagram name="Sayfa -1" id="riQHEpsY_PknyS750soo">
+    <mxGraphModel dx="548" dy="893" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="7VZSE7VBk-LmD0vKzasV-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7VZSE7VBk-LmD0vKzasV-27" target="7VZSE7VBk-LmD0vKzasV-44">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7VZSE7VBk-LmD0vKzasV-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="7VZSE7VBk-LmD0vKzasV-27" target="7VZSE7VBk-LmD0vKzasV-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7VZSE7VBk-LmD0vKzasV-27" value="&lt;span style=&quot;font-weight: 400;&quot;&gt;&amp;nbsp; Buck Converter Controller&lt;/span&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="160" y="260" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="7VZSE7VBk-LmD0vKzasV-31" value="&lt;span style=&quot;&quot;&gt;&amp;nbsp;- DeviceMainLoop()&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;- state (INIT, MODE_EN, CONTROL, RUN, FAULT)&lt;/span&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;&amp;lt;&amp;lt;uses&amp;gt;&amp;gt;&amp;nbsp;&amp;nbsp;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;--&amp;gt; Sensor Converter&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;--&amp;gt; PID Regulator&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;--&amp;gt; IO Monitoring (saykal_io)&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;span style=&quot;&quot;&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;--&amp;gt; CAN Protocol Handler&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;--&amp;gt; Timer / ADC Initializer&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7VZSE7VBk-LmD0vKzasV-27">
+          <mxGeometry y="30" width="200" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="7VZSE7VBk-LmD0vKzasV-34" value="Sensor Converter" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d0cee2;strokeColor=#56517e;" vertex="1" parent="1">
+          <mxGeometry x="450" y="210" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="7VZSE7VBk-LmD0vKzasV-35" value="&lt;div&gt;&amp;nbsp; - Sensor_ConvertToVoltage()&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp;- Sensor_ConvertToCurrent()&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7VZSE7VBk-LmD0vKzasV-34">
+          <mxGeometry y="30" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7VZSE7VBk-LmD0vKzasV-36" value="&lt;span style=&quot;font-weight: 400;&quot;&gt;PID Regulator&lt;/span&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d0cee2;strokeColor=#56517e;" vertex="1" parent="1">
+          <mxGeometry x="450" y="320" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="7VZSE7VBk-LmD0vKzasV-37" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp; &amp;nbsp;- PID_Init()&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp;- PID_Update()&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7VZSE7VBk-LmD0vKzasV-36">
+          <mxGeometry y="30" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7VZSE7VBk-LmD0vKzasV-40" value="&lt;span style=&quot;font-weight: 400;&quot;&gt;Saykal IO&lt;/span&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d0cee2;strokeColor=#56517e;" vertex="1" parent="1">
+          <mxGeometry x="450" y="440" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="7VZSE7VBk-LmD0vKzasV-41" value="&lt;div&gt;&amp;nbsp; &amp;nbsp;- saykal_io_monitoring()&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp;- saykal_io_toggle_status_led()&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp;- saykal_io_set_fault_led()&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7VZSE7VBk-LmD0vKzasV-40">
+          <mxGeometry y="30" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7VZSE7VBk-LmD0vKzasV-42" value="&lt;span style=&quot;font-weight: 400;&quot;&gt;Protocol Handler&lt;/span&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d0cee2;strokeColor=#56517e;" vertex="1" parent="1">
+          <mxGeometry x="450" y="560" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="7VZSE7VBk-LmD0vKzasV-43" value="&amp;nbsp;- protocol_init()" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7VZSE7VBk-LmD0vKzasV-42">
+          <mxGeometry y="30" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7VZSE7VBk-LmD0vKzasV-44" value="&lt;span style=&quot;font-weight: 400;&quot;&gt;Hardware Init&lt;/span&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d0cee2;strokeColor=#56517e;" vertex="1" parent="1">
+          <mxGeometry x="160" y="630" width="200" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="7VZSE7VBk-LmD0vKzasV-45" value="&lt;div&gt;&amp;nbsp; &amp;nbsp;- gpio_init()&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp;- adc1_init()&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp;- tim1_init(), tim4_init()&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp;- can_receiver_init()&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp;- can_transmitter_init()&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7VZSE7VBk-LmD0vKzasV-44">
+          <mxGeometry x="10" y="35" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7VZSE7VBk-LmD0vKzasV-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="7VZSE7VBk-LmD0vKzasV-31" target="7VZSE7VBk-LmD0vKzasV-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7VZSE7VBk-LmD0vKzasV-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="7VZSE7VBk-LmD0vKzasV-31" target="7VZSE7VBk-LmD0vKzasV-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7VZSE7VBk-LmD0vKzasV-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="7VZSE7VBk-LmD0vKzasV-31" target="7VZSE7VBk-LmD0vKzasV-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
