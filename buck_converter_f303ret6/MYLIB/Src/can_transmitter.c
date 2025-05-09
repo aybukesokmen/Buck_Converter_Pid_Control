@@ -1,12 +1,23 @@
 #include "can_transmitter.h"
 
-
-// STM32F303 bxCAN register tabanlı gönderim
 void can_transmitter_init(void)
 {
+    RCC->APB1ENR |= RCC_APB1ENR_CANEN;
+    RCC->AHBENR |= RCC_AHBENR_GPIOBEN;
 
-    // CAN saatini aç (RCC üzerinden), filtre vs. burada ayarlanabilir (opsiyonel)
-    // NOT: Eğer başka bir yerde yapılandırıldıysa burası boş bırakılabilir.
+    GPIOB->MODER &= ~(GPIO_MODER_MODER8 | GPIO_MODER_MODER9);
+    GPIOB->MODER |=  (GPIO_MODER_MODER8_1 | GPIO_MODER_MODER9_1);
+
+    GPIOB->AFR[1] &= ~((0xF << (0 * 4)) | (0xF << (1 * 4)));  // temizle
+    GPIOB->AFR[1] |=  (4 << (0 * 4)) | (4 << (1 * 4));         // PB8, PB9 AF4
+
+    CAN->MCR |= CAN_MCR_INRQ;
+    while ((CAN->MSR & CAN_MSR_INAK) == 0);
+
+    CAN->BTR = (0 << 30) | (0 << 24) | (12 << 16) | (1 << 20) | (3 << 0);
+
+    CAN->MCR &= ~CAN_MCR_INRQ;
+    while (CAN->MSR & CAN_MSR_INAK);
 }
 
 // DBC'ye uygun veri gönderir (CAN1, mailbox 0)

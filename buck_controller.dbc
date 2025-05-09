@@ -38,7 +38,7 @@ VAL_TABLE_ Status_Value_Table 5 "FAULT" 3 "OVERCURRENT" 2 "ERROR" 1 "RUNNING" 0 
 
 
 BO_ 1393 DEVICE_STATUS: 8 Vector__XXX
- SG_ Iin : 63|16@1+ (0.01,0) [0|15] "A" Vector__XXX
+ SG_ Iin : 64|16@1+ (0.01,0) [0|15] "A" Vector__XXX
  SG_ Vout : 48|16@1+ (0.01,0) [0|30] "V" Vector__XXX
  SG_ Temp : 32|8@1- (1,0) [-40|125] "°C" Vector__XXX
  SG_ Status : 24|8@1+ (1,0) [0|5] "" Vector__XXX

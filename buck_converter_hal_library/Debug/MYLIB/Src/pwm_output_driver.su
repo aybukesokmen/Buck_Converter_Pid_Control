@@ -1,2 +1,0 @@
-../MYLIB/Src/pwm_output_driver.c:19:6:PWM_Output_Init	4	static
-../MYLIB/Src/pwm_output_driver.c:50:6:PWM_Output_SetDuty	24	static

@@ -1,1 +1,2 @@
-../MYLIB/Src/deviceloop.c:10:6:DeviceMainLoop	1
+../MYLIB/Src/deviceloop.c:15:6:sensor_monitoring	1
+../MYLIB/Src/deviceloop.c:21:6:DeviceMainLoop	10

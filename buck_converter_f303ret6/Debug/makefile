@@ -61,8 +61,8 @@ all: main-build
 main-build: buck_converter_f303ret6.elf secondary-outputs
 
 # Tool invocations
-buck_converter_f303ret6.elf buck_converter_f303ret6.map: $(OBJS) $(USER_OBJS) C:\Users\haydar.gungor\STM32CubeIDE\workspace_1.18.1\buck_converter_f303ret6\STM32F303RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "buck_converter_f303ret6.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\haydar.gungor\STM32CubeIDE\workspace_1.18.1\buck_converter_f303ret6\STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="buck_converter_f303ret6.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+buck_converter_f303ret6.elf buck_converter_f303ret6.map: $(OBJS) $(USER_OBJS) D:\software\Saykal\repo\Buck_Converter_Pid_Control\buck_converter_f303ret6\STM32F303RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "buck_converter_f303ret6.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\software\Saykal\repo\Buck_Converter_Pid_Control\buck_converter_f303ret6\STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="buck_converter_f303ret6.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

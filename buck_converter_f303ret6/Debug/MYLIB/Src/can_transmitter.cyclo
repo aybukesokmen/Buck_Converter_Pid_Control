@@ -1,0 +1,2 @@
+../MYLIB/Src/can_transmitter.c:3:6:can_transmitter_init	3
+../MYLIB/Src/can_transmitter.c:24:6:can_transmitter_send	2

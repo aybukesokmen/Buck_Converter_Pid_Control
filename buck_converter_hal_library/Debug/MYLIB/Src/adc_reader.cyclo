@@ -1,2 +1,0 @@
-../MYLIB/Src/adc_reader.c:19:6:ADC_Reader_Init_DMA	2
-../MYLIB/Src/adc_reader.c:77:7:ADC_Reader_ConvertToVoltage	1

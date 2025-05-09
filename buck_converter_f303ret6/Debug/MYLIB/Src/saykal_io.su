@@ -1,0 +1,6 @@
+../MYLIB/Src/saykal_io.c:19:6:saykal_io_monitoring	8	static
+../MYLIB/Src/saykal_io.c:25:6:saykal_io_set_fault_led	16	static
+../MYLIB/Src/saykal_io.c:30:6:saykal_io_set_status_led	16	static
+../MYLIB/Src/saykal_io.c:35:6:saykal_io_toggle_status_led	16	static
+../MYLIB/Src/saykal_io.c:46:13:saykal_io_read_inputs	4	static
+../MYLIB/Src/saykal_io.c:60:13:saykal_io_write_outputs	4	static

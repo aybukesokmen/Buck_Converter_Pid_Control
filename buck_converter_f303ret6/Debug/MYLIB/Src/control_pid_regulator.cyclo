@@ -1,2 +1,3 @@
-../MYLIB/Src/control_pid_regulator.c:11:6:PID_Init	1
-../MYLIB/Src/control_pid_regulator.c:25:7:PID_Update	5
+../MYLIB/Src/control_pid_regulator.c:24:6:PID_Init	1
+../MYLIB/Src/control_pid_regulator.c:38:7:PID_Update	5
+../MYLIB/Src/control_pid_regulator.c:69:9:MAP	1

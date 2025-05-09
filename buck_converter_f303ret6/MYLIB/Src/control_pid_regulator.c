@@ -8,6 +8,19 @@
 
 #include "control_pid_regulator.h"
 
+//extern PID_Controller_t pid_controller;
+
+PID_Controller_t pid_controller = {
+    .Kp = 0.5f,
+    .Ki = 0.1f,
+    .Kd = 0.01f,
+    .dt = 0.0001f,
+    .integral = 0.0f,
+    .previous_error = 0.0f,
+    .out_min = 0.0f,
+    .out_max = 0.95f
+};
+
 void PID_Init(PID_Controller_t *pid, float Kp, float Ki, float Kd, float dt, float out_min, float out_max)
 {
     pid->Kp = Kp;
@@ -50,4 +63,10 @@ float PID_Update(PID_Controller_t *pid, float setpoint, float measurement)
     if (output < pid->out_min) output = pid->out_min;
 
     return output;
+}
+
+
+int32_t MAP(int32_t au32_IN, int32_t au32_INmin, int32_t au32_INmax, int32_t au32_OUTmin, int32_t au32_OUTmax)
+{
+     return ((((au32_IN - au32_INmin) *(au32_OUTmax - au32_OUTmin)) / (au32_INmax - au32_INmin)) + au32_OUTmin);
 }

@@ -5,6 +5,9 @@
 #include "deviceloop.h"
 #include "stm32f303xe.h"
 
+#define CAN1 CAN
+
+
 typedef struct {
     uint16_t vout_mV;     // 0.01V çözünürlük
     uint16_t iout_mA;     // 0.01A çözünürlük

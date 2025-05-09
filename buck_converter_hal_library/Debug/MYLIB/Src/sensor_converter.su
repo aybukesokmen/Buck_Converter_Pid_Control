@@ -1,2 +1,0 @@
-../MYLIB/Src/sensor_converter.c:9:7:Sensor_ConvertToVoltage	24	static
-../MYLIB/Src/sensor_converter.c:15:7:Sensor_ConvertToCurrent	16	static

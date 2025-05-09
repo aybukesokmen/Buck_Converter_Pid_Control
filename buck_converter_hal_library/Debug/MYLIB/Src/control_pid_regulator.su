@@ -1,2 +1,0 @@
-../MYLIB/Src/control_pid_regulator.c:11:6:PID_Init	40	static
-../MYLIB/Src/control_pid_regulator.c:25:7:PID_Update	48	static
