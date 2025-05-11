@@ -17,11 +17,12 @@ int main(void)
   while (1)
   {
 
-	   // Ana kontrol döngüsü fonksiyonunu çağır
-	    // Bu fonksiyon:
-	    // - Sensör okumalarını yapar
-	    // - PID kontrolünü gerçekleştirir
-	    // - CAN haberleşmesini yönetir
+	  // Tüm cihaz işlemleri deviceloop.c içindeki DeviceMainLoop() fonksiyonunda yürütülür:
+	    // - Sensör verilerinin okunması
+	    // - PID kontrol algoritmasının çalıştırılması
+	    // - CAN haberleşmesi ile telemetri aktarımı
+	    // - Hata tespiti ve LED yönetimi
+	    DeviceMainLoop();
 	    DeviceMainLoop();
 	    HAL_Delay(1);
 

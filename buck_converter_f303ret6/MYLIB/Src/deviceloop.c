@@ -44,16 +44,16 @@ void DeviceMainLoop(void)
             saykal_io_monitoring();
             saykal_io_toggle_status_led(5000); // Yavaş yanıp sönen LED
 
-            // Enable koşulu (örneğin bir buton kontrolü)
+            // Enable koşulu ( bir buton kontrolü)
             if(s_inputs.a_service_enable_b[0]) {
                 state = CONTROL;
             }
             break;
 
         case CONTROL:
-            // Sensör ve girişleri oku
-            saykal_io_monitoring();
+           /* saykal_io_monitoring();
             sensor_monitoring();
+            */
 
             // Başlangıç kontrolü yap
             if(s_sys_state.vout > 5.0f) { // Minimum başlama voltajı
@@ -62,10 +62,10 @@ void DeviceMainLoop(void)
             break;
 
         case RUN:
-            // 1. Sensör ve girişleri oku
-            saykal_io_monitoring();
-            sensor_monitoring();
 
+          /*  saykal_io_monitoring();
+            sensor_monitoring();
+*/
             // 2. PID ile duty hesapla
             s_sys_state.pwm_duty = PID_Update(&pid_controller,
                                             s_sys_state.vout_target,
@@ -82,7 +82,7 @@ void DeviceMainLoop(void)
                 s_can_state = SYS_STATE_RUNNING;
                 saykal_io_set_fault_led(false);
 
-                // PWM çıkışını güncelle
+                // PWM cikisini güncelle
                 TIM1->CCR1 = (uint16_t)(s_sys_state.pwm_duty * TIM1->ARR);
             }
 
